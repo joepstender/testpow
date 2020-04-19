@@ -44,7 +44,8 @@ defmodule Testpow.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       # Additional
-      {:pow, "~> 1.0.19"}
+      {:pow, "~> 1.0.19"},
+      {:triplex, "~> 1.3.0"}
     ]
   end
 
