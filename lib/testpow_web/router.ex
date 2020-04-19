@@ -28,7 +28,12 @@ defmodule TestpowWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/tenants", TenantController, only: [:show]
+  end
+
+  scope "/", TestpowWeb do
+    pipe_through [:browser]
+
+    resources "/", TenantController, only: [:show]
   end
 
   scope "/siteadmin", TestpowWeb do

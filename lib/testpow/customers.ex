@@ -35,7 +35,14 @@ defmodule Testpow.Customers do
       ** (Ecto.NoResultsError)
 
   """
-  def get_tenant!(id), do: Repo.get!(Tenant, id)
+
+  # def get_tenant!(id), do: Repo.get!(Tenant, id)
+  # We use slugs instead of id's
+
+  def get_tenant!(slug) do
+    Tenant
+    |> Repo.get_by!(%{slug: slug})
+  end
 
   @doc """
   Creates a tenant.

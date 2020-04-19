@@ -2,6 +2,8 @@ defmodule Testpow.Customers.Tenant do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Phoenix.Param, key: :slug}
+
   schema "tenants" do
     field :name, :string
     field :slug, :string
