@@ -31,6 +31,12 @@ defmodule TestpowWeb.Router do
     resources "/tenants", TenantController, only: [:show]
   end
 
+  scope "/siteadmin", TestpowWeb do
+    pipe_through [:browser]
+
+    resources "/customers", TenantController, except: [:show]
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", TestpowWeb do
   #   pipe_through :api

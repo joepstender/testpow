@@ -13,7 +13,7 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+            <li><%= link "Customers", to: Routes.tenant_path(@conn, :index) %></li>
             <%= if Pow.Plug.current_user(@conn) do %>
               <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
             <% else %>
