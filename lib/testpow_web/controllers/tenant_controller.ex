@@ -17,6 +17,9 @@ defmodule TestpowWeb.TenantController do
   def create(conn, %{"tenant" => tenant_params}) do
     case Customers.create_tenant(tenant_params) do
       {:ok, tenant} ->
+        # Here we create a tenant for each customer
+        Triplex.create(tenant.slug)
+
         conn
         |> put_flash(:info, "Tenant created successfully.")
         |> redirect(to: Routes.tenant_path(conn, :show, tenant))
