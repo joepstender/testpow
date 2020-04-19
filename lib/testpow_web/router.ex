@@ -20,6 +20,16 @@ defmodule TestpowWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: TenantzWeb.PlugErrorHandler
+  end
+
+  pipeline :not_authenticated do
+    plug Pow.Plug.RequireNotAuthenticated,
+      error_handler: TenantzWeb.AuthErrorHandler
+  end
+
   scope "/" do
     pipe_through :browser
 
@@ -36,7 +46,12 @@ defmodule TestpowWeb.Router do
   scope "/", TestpowWeb do
     pipe_through [:browser]
 
-    resources "/", TenantController, only: [:show]
+    resources "/", TenantController, only: [:show] do
+      get "/signup", RegistrationController, :new, as: :signup
+      post "/signup", RegistrationController, :create, as: :signup
+      # get "/login", SessionController, :new, as: :login
+      # post "/login", SessionController, :create, as: :login
+    end
   end
 
   scope "/siteadmin", TestpowWeb do
