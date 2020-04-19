@@ -32,7 +32,8 @@ config :testpow, :pow,
   repo: Testpow.Repo,
   extensions: [PowInvitation],
   controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
-  mailer_backend: TestpowWeb.PowMailer
+  mailer_backend: TestpowWeb.PowMailer,
+  web_module: TestpowWeb
 
 # Configure Triplex
 config :triplex, repo: Testpow.Repo
