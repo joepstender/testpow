@@ -1,6 +1,18 @@
 <h1>Show Tenant</h1>
-
 <ul>
+
+  <%= if Pow.Plug.current_user(@conn) do %>
+    <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
+  <% else %>
+    <span><%= link "Register", to: Routes.tenant_signup_path(@conn, :new, @tenant) %></span>
+    <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
+  <% end %>
+
+</ul>
+
+<hr>
+
+ <ul>
 
   <li>
     <strong>Name:</strong>

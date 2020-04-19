@@ -1,4 +1,5 @@
 <%= form_for @changeset, Routes.tenant_signup_path(@conn, :create, @tenant), fn f -> %>
+
   <%= label f, :email %>
   <%= email_input f, :email %>
   <%= error_tag f, :email %>
