@@ -7,6 +7,11 @@
     <%= @tenant.name %>
   </li>
 
+  <li>
+    <strong>Raw Current Tenant:</strong>
+    <%= @raw_current_tenant %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.tenant_path(@conn, :edit, @tenant) %></span>
