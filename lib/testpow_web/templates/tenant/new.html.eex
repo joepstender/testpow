@@ -1,0 +1,5 @@
+<h1>New Tenant</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.tenant_path(@conn, :create)) %>
+
+<span><%= link "Back", to: Routes.tenant_path(@conn, :index) %></span>
